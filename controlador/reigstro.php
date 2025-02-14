@@ -1,3 +1,4 @@
+<div class="container mt-3">
 <?php
 if (!empty($_POST["btnregistrar"])) {
     if (!empty($_POST["labor"]) and !empty($_POST["fecha"]) and !empty($_POST["cantidad"]) and !empty($_POST["tarifa"]) and !empty($_POST["empleado"]) and !empty($_POST["lote"]))  { 
@@ -13,11 +14,12 @@ if (!empty($_POST["btnregistrar"])) {
                                  VALUES ('$labor', '$fecha', '$cantidad', '$tarifa', '$empleado', '$lote')");
 
     }if ($sql) {
-            echo '<div class="alert alert-success">Datos guardados correctamente</div>';
+             echo '<div class="alert alert-success">✅ Datos guardados correctamente</div>';
         } else {
-            echo '<div class="alert alert-danger">Error al registrar</div>';
+            echo '<div class="alert alert-danger">❌ Error al registrar: ' . $conexion->error . '</div>';
         }   
     } else {
-        echo '<div class="alert alert-warning">Alguno de los campos está vacío</div>';
+        echo '<div class="alert alert-warning">⚠️ Por favor, llene todos los campos</div>';
     }
 ?>
+</div>

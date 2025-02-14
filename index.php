@@ -13,10 +13,16 @@
 
 </head>
 <body>
-        <nav class="navbar" style="background-color: #FFEED8;">
+    <script>
+        function eliminar(){
+            var respuesta=confirm("Estas seguro que quieres eliminar este registro?");
+            return respuesta 
+        }
+    </script>
+        <nav class="navbar" style="background-color: #5A464C;">
         <div class="container-fluid">
-            <a class="navbar-brand">
-            <img src="https://e7.pngegg.com/pngimages/678/741/png-clipart-skill-organization-uttar-pradesh-sales-marketing-registration-acts-text-logo-thumbnail.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">    
+            <a class="navbar-brand" style="color: white; font-weight: bold;">
+            <img src="">    
             REGISTRO DE LABORES </a>
             <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -24,13 +30,12 @@
             </form>
         </div>
         </nav>
-
-
+        
   <div class="container-fluid row">
     <form class="col-4 p-3" method="POST">
         <h3 class="text-center text-secondary"> Registro</h3>
         <?php
-        include  "modelo/conexiondb.php";
+        include "modelo/conexiondb.php";
         include "controlador/eliminar_Registro.php";
         ?>
         <?php 
@@ -74,8 +79,8 @@
                 <input type="text" class="form-control" name="lote" required>
             </div>
     
-            <div class="col-md-12">
-                <button class="btn btn-primary" name="btnregistrar" type="submit" value="ok">Registrar</button>
+            <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-outline-success" name="btnregistrar" type="submit" value="ok">Registrar</button>
             </div>
         </form>
     
@@ -96,7 +101,7 @@
             <tbody>
                 <?php
                     include "modelo/conexiondb.php";
-                    $sql = $conexion->query(" select * from labores");
+                    $sql = $conexion->query("select * from labores");
                     while ($datos = $sql->fetch_object()) { ?>
                     <tr>
                         <td><?= $datos->id ?></td>
@@ -108,7 +113,7 @@
                         <td><?= $datos->lote?></td>
                         <td> 
                             <a href="modificar_registro.php? id=<?=$datos->id?>" class="btn btn small btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="index.php? id=<?=$datos->id?>" class="btn btn small btn-danger"><i class="fa-solid fa-trash"></i></a>
+                            <a onclick="return eliminar()" href="index.php? id=<?=$datos->id?>" class="btn btn small btn-danger"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 <?php }

@@ -19,7 +19,15 @@ $sql=$conexion->query("select * from labores where id=$id_consulta");
 <body>
 <form class="col-4 p-3 m-auto" method="POST">
 
-<h3 class="text-center text-secondary">Modificar registro</h3>
+<nav class="navbar" style="background-color: #5A464C;">
+  <div class="container-fluid d-flex justify-content-center">
+    <span style="color: white; font-weight: bold;">
+      MODIFICAR REGISTRO
+    </span>
+  </div>
+</nav>
+
+
 
 <!-- Campo oculto para enviar el ID -->
 <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
@@ -67,8 +75,8 @@ while ($datos = $sql->fetch_object()) { ?>
 
 <?php } ?>
 
-<div class="col-md-12">
-    <button class="btn btn-primary" name="btnmodificar" type="submit" value="ok">Modificar</button>
+<div class="d-flex justify-content-center mt-3">
+    <button class="btn btn-outline-success" name="btnmodificar" type="submit" value="ok">Modificar</button>
 </div>
 
 </form>
